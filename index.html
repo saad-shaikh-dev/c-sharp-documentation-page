@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="flexbox">
+        <div class="navbar">
+            <nav id="navbar">
+                <header><h1>C#<br/>Documentation</h1></header>
+                <h2 class="collapse-trigger"></h2>
+                <ul class="collapsible-content">
+                    <li class="nav-li"><a class="nav-link" href="#Introduction">Introduction</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#Arrays">Arrays</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#Classes">Classes</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#If_Statements">If Statements</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#Lists">Lists</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#Loops">Loops</a></li>
+                    <li class="nav-li"><a class="nav-link" href="#Methods">Methods</a></li>
+                </ul>
+            </nav>
+        </div>
+        <main id="main-doc">
+            <section id="Introduction" class="main-section">
+                <header>Introduction</header>
+                <p>We are going to learn tp code in C#. But first, lets know a few things about the programming language:</p>
+                <ul>
+                    <li>It is an object oriented language</li>
+                    <li>It is a statically typed language</li>
+                    <li>It is a compiled language</li>
+                </ul>
+                <p> Now that that is out of the way, lets start with the tutorial.</p>
+            </section>
+            <section id="Arrays" class="main-section">
+                <header>Arrays</header>
+                <p>Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;<br/>
+                    namespace Arrays<br/>
+                    {<br/>
+                        class Program<br/>
+                        {<br/>
+                            static void Main(string[] args)<br/>
+                            {<br/>
+                                string[] movies = new string[4]; //new array created | the number of arrays are finite<br/>
+                                Console.WriteLine("Write down 4 movies:");<br/>
+                                for(int i = 0; i < movies.Length; i++) { movies[i] = Console.ReadLine(); } // read for loop<br/>
+                                Console.WriteLine("\nI reordered the movies alphabetically:");<br/>
+                                Array.Sort(movies); // rearranges the movies array alphabetically
+                                for(int i = 0; i < movies.Length; i++) { Console.WriteLine(movies[i]); }<br/>
+                                Console.ReadKey();<br/>
+                            }<br/>
+                        }<br/>
+                    }<br/>
+                </code>
+            </section>
+            <section id="Classes" class="main-section">
+                <header>Classes</header>
+                <p>A Class is a group of related methods and variables. A class describes these things, and in most cases, you create an instance of this class, now referred to as an object. </p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+    
+                    namespace Classes
+                    {
+                        class Wizard{
+                            public string name;
+                            public string favoriteSpell;
+                            public int spellSlotts;
+                            public float experienceLevel;
+    
+                            public static int HowManyWizards; // static means it applies to the whole class
+    
+                            public Wizard(string _name, string _favoriteSpell){ // this is a constructor to create a default
+                                name=_name;
+                                favoriteSpell=_favoriteSpell;
+                                spellSlotts=5;
+                                experienceLevel=0f;
+                                HowManyWizards++;
+                            }
+    
+                            public void CastSpell(){
+                                if(spellSlotts>0){
+                                    Console.WriteLine(name + " cast " + favoriteSpell);
+                                    spellSlotts--;
+                                    experienceLevel++;
+                                }
+                                else{
+                                    Console.WriteLine("Uh oh.. " + name + " has run out of spells");
+                                }
+                                
+                            }
+                            public void Rest(){
+                                Console.WriteLine(name + " rests to gain more spell slots");
+                                spellSlotts+=2;
+                            }
+                        }
+                        
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                Wizard wizard1 = new Wizard("Sufy", "Tickle Spell");
+    
+                                Console.WriteLine("Wizard: " + wizard1.name);
+                                Console.WriteLine("Spell slotts: " + wizard1.spellSlotts);
+                                Console.WriteLine("Experience level: " + wizard1.experienceLevel);
+                                Console.WriteLine("");
+    
+                                wizard1.CastSpell();
+                                wizard1.CastSpell();
+                                wizard1.CastSpell();
+                                wizard1.CastSpell();
+                                wizard1.CastSpell();
+                                wizard1.CastSpell();
+                                Console.WriteLine("");
+    
+                                Console.WriteLine("Wizard: " + wizard1.name);
+                                Console.WriteLine("Spell slotts: " + wizard1.spellSlotts);
+                                Console.WriteLine("Experience level: " + wizard1.experienceLevel);
+                                Console.WriteLine("");
+    
+                                wizard1.Rest();
+                                Console.WriteLine("");
+    
+                                Console.WriteLine("Wizard: " + wizard1.name);
+                                Console.WriteLine("Spell slotts: " + wizard1.spellSlotts);
+                                Console.WriteLine("Experience level: " + wizard1.experienceLevel);
+                                Console.WriteLine("");
+    
+                                Wizard wizard2 = new Wizard("Fluffleuffages", "Fluffy Spell");
+    
+                                Console.WriteLine("There are " + Wizard.HowManyWizards + " Wizards in the realm");
+    
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                </code>
+            </section>
+            <section id="If_Statements" class="main-section">
+                <header>If Statements</header>
+                <p>An If Statement identifies which statement to run based on the value of a Boolean expression.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    namespace IfStatement
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                Console.Title = "Playground eligiblity";
+                                Console.WindowWidth = 100; // defining width
+                                int age;
+                                int height;
+    
+                                Console.WriteLine("What is your age: ");
+                                age = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("What is your height (cm): ");
+                                height = Convert.ToInt32(Console.ReadLine());
+    
+                                if (age>17 && height > 150) { Console.WriteLine("You can enter"); }
+                                else { Console.WriteLine("You don't meet the requirement"); }
+                            }
+                        }
+                    }
+                </code>
+            </section>
+            <section id="Lists" class="main-section">
+                <header>Lists</header>
+                <p>A List is a collection of strongly typed objects that can be accessed by index and having methods for sorting, searching, and modifying list.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    using System.Collections.Generic; // this is needed to use the lists feature
+    
+                    namespace Lists
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                Console.Title = "Shopping List";
+                                List<string> shoppingList = new List<string>();
+                                shoppingList.Add("Milk");
+                                shoppingList.Add("Tea");
+                                shoppingList.Add("Orange Juice");
+                                shoppingList.Add("7 Up");
+                                shoppingList.Add("Laban");
+    
+                                /*for (int i = 0; i < 5; i++) { shoppingList[i] = Console.ReadLine(); }*/ // to add to list
+    
+                                for (int i = 0; i < shoppingList.Count; i++) { Console.WriteLine(shoppingList[i]); }
+                                shoppingList.Remove("7 Up");
+                                shoppingList.RemoveAt(3);
+                                Console.WriteLine("");
+                                for (int i = 0; i < shoppingList.Count; i++) { Console.WriteLine(shoppingList[i]); }
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                </code>
+            </section>
+            <section id="Loops" class="main-section">
+                <header>Loops</header>
+                <p>A Loop statement allows us to execute a statement or a group of statements multiple times.</p>
+                <p>There are 3 types of Loops:</p>
+                <ul>
+                    <li>Foor Loops</li>
+                    <li>While Loops</li>
+                    <li>Do...While Loops</li>
+                </ul>
+                <p>A <strong>For Loop</strong> is a repetition control structure that allows you to efficiently write a loop that needs to execute a specific number of times.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    namespace Loop.ForLoop
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                Console.Write("What number do you want to raise?: ");
+                                int numberToRaise = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("How many times do you want to raise it?: ");
+                                int loopLimit = Convert.ToInt32(Console.ReadLine());
+                                for (int f = 1; f <= loopLimit; f++)
+                                {
+                                    double raisedResult = Math.Pow(numberToRaise, f);
+                                    Console.WriteLine(raisedResult);
+                                }
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                </code>
+                <p>The <strong>While Loop</strong> loops through a block of code as long as a specified condition is True</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    namespace Loop.WhileLoop
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                // while loop
+                                Console.WriteLine("Guess my brother's age (while loop):");
+                                int ageGuessBrothers;
+                                ageGuessBrothers = Convert.ToInt32(Console.ReadLine());
+                                while (ageGuessBrothers != 17)
+                                {
+                                    Console.WriteLine("Nope.. try again.");
+                                    ageGuessBrothers = Convert.ToInt32(Console.ReadLine());
+                                }
+                                Console.WriteLine("Yep.. my brother is " + ageGuessBrothers + " years old :)");
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                </code>
+                <p>Unlike For and While Loops, which test the loop condition at the start of the loop, the <strong>Do...While Loop</strong> checks its condition at the end of the loop.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    namespace Loop.DoWhileLoop
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                // do while loop | not working properly
+                                Console.WriteLine("Guess my age (do while loop):");
+                                int ageGuess;
+                                do
+                                {
+                                    ageGuess = Convert.ToInt32(Console.ReadLine());
+                                    Console.WriteLine("Nope.. try again."); // this still shows up even after correct answers
+                                }
+                                while (ageGuess != 28);
+                                Console.WriteLine("Yep.. I am " + ageGuess + " years old :)");
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                </code>
+            </section>
+            <section id="Methods" class="main-section">
+                <header>Methods</header>
+                <p>A method is a code block that contains a series of statements. A program causes the statements to be executed by calling the method and specifying any required method arguments.</p>
+                <strong>Example</strong><br/>
+                <code>
+                    using System;
+                    namespace Methods // methods are for including things from external sources
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                ForLoop();
+                                int answer= Multiply(2,3);
+                                Console.WriteLine("\nthe multiplication answer is " + answer);
+                                if (answer % 2 == 0) { Console.WriteLine(answer + " is an even number"); }
+                                else { Console.WriteLine(answer + " is an uneven number"); }
+                            }
+                            static void ForLoop() // the word static means you want to call it
+                            {
+                                Console.Write("What number do you want to raise?: ");
+                                int numberToRaise = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("How many times do you want to raise it?: ");
+                                int loopLimit = Convert.ToInt32(Console.ReadLine());
+                                for (int f = 1; f <= loopLimit; f++)
+                                {
+                                    double raisedResult = Math.Pow(numberToRaise, f);
+                                    Console.WriteLine(raisedResult);
+                                }
+                                Console.ReadKey();
+                            }
+                            static int Multiply (int number1, int number2) // method with parameters and return
+                            {
+                                int result = number1 * number2;
+                                return result;
+                            }
+                        }
+                    }
+                </code>
+            </section>
+        </main>
+    </div>
+</body>
+<script>
+    var coll = document.getElementsByClassName("collapse-trigger");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+      });
+    }
+</script>
+</html>
